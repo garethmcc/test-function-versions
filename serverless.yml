@@ -1,0 +1,23 @@
+service: new-service
+org: garethmccumskey
+app: fakeapp
+
+frameworkVersion: '2'
+
+provider:
+  lambdaHashingVersion: 20201221
+  name: aws
+  runtime: nodejs12.x
+package:
+  individually: true
+
+functions:
+  hello:
+    handler: handler.hello
+  secondfunction:
+    handler: second.second
+    package:
+      patterns:
+        - second.js
+        - '!handler.js'
+      individually: true
